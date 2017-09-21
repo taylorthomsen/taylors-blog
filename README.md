@@ -1,11 +1,32 @@
 # [Vuelog](https://vuelog.js.org/)
 
-[![CircleCI](https://img.shields.io/circleci/project/myst729/Vuelog/master.svg)](https://circleci.com/gh/myst729/Vuelog/tree/master)
-[![Codecov](https://img.shields.io/codecov/c/github/myst729/Vuelog/master.svg)](https://codecov.io/github/myst729/Vuelog?branch=master)
-[![Release](https://img.shields.io/github/release/myst729/Vuelog.svg)](https://github.com/myst729/Vuelog/releases/latest)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/myst729/Vuelog/blob/master/LICENSE)
-
 > A backend-free blog system built on top of Vue.js
+
+Article Title: Build a static blog with Vue.js and Vuelog
+Description:
+In this tutorial, we will build a blogging application with Vue.js and Vuelog. Vuelog is a static site generator that parses markdown files to render our blog posts on the client side. In this way, we can build a feature complete blogging application while harnessing the power of markdown and Vue.js client-side interactivity.
+
+Ideas to Present in Article:
+- Overview of the application, what we will build and links to source code + demo
+- Introduction to the Vuelog and how static site generators work
+- Generate the application and add posts
+- Deploy blog to Github Pages
+- Conclusion 
+
+### Steps
+- Clone the Vuelog repo, install dep, start dev server
+- internationalization is a core feature and baked into the project 
+	-  `<!-- zh-CN:+ -->  <!-- zh-CN:- -->` in posts for other languages
+- 
+
+### Example post 
+```
+title: Author posts or pages
+category: docs
+date: 2017-01-13
+------------------------------------
+Start your post content here...
+```
 
 
 ## Browsers Support

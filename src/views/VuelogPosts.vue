@@ -1,5 +1,6 @@
 <template>
   <div class="posts">
+    <h1>All Posts</h1>
     <div class="posts-body">
       <div class="post" v-for="(post, index) in dataset.posts" :key="index">
         <vuelog-renderer class="post-body" :type="'posts'" :metadata="post"></vuelog-renderer>
@@ -31,6 +32,7 @@
         const p = /-more/.test(this.$route.name) ? +this.$route.params.p : 1
         const postsCount = this.$store.getters.config.postsCount
         const posts = this.getPosts(collection.posts, p, postsCount)
+        console.log(posts)
         const siblings = this.getSiblings(p, Math.ceil(collection.posts.length / postsCount), category)
         return {
           posts,

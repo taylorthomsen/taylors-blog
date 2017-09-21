@@ -1,12 +1,12 @@
 {
-  "name": "vuelog",
+  "name": "vuelog-starter",
   "version": "2.11.1",
-  "description": "A backend-free blog system built on top of Vue.js",
+  "description": "A custom blog built with Vue.js and Vuelog",
   "author": "Leo Deng",
   "license": "MIT",
-  "brand": "Vuelog",
+  "brand": "My First Vuelog",
   "website": "https://vuelog.js.org",
-  "project": "https://github.com/myst729/Vuelog",
+  "project": "https://github.com/connor11528",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/myst729/Vuelog.git"
