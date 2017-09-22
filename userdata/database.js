@@ -12,7 +12,7 @@ window.VUELOG_DATABASE = {
     // Path to the domain root that serves your site, starts and ends with slash (`/`).
     // Set to `'/'` if your site is under domain root.
     // Change this for github pages web hosting
-    base: '/', 
+    base: '/vuelog-starter/', 
 
     // The path to route to when you visit `/`.
     // Set to `/home`, `/blog` or a valid path at your need.
