@@ -127,6 +127,12 @@ window.VUELOG_DATABASE = {
   posts: [
     /* 2017 */
     {
+      title: {'en-US': 'This is a sample title'},
+      slug: 'sample',
+      category: 'docs',
+      date: '2017-09-22'
+    },
+    {
       title: {'en-US': 'Multiple languages support'},
       slug: 'multiple-languages-support',
       category: 'docs',

@@ -15,31 +15,155 @@ In this tutorial we are going to go through building a static blogging applicati
 
 ## The application 
 
+A static blogging application means that all of our content is hosted on the client side. We do not need a server to handle incoming requests or a database like MySQL or MongoDB to store our content. Instead our application will be made up entirely of HTML, CSS and Javascript. This decreases our hosting costs, can increase performance and simplify our application.
+
+This blog application will feature pages for our portfolio work, an about page and a blog. Additionally, we will have an archive of posts grouped by year and category as well as social links. The application will be hosted live using Github Pages. The source code for the application and a demo are featured below.
+
 Demo: http://connorleech.info/vuelog-starter/
 
 Source code: https://github.com/connor11528/vuelog-starter
 
-## Why static blogs?
+## Alternatives
 
-A static blogging application means that all of our content is hosted on the client side. We do not need a server to handle incoming requests or a database like MySQL or MongoDB to store our content. Instead our application will be made up entirely of HTML, CSS and Javascript. This decreases our hosting costs, can increase performance and simplify our application.
+There are many other solutions for static blogging out there. One to keep an eye on for the Vue.js community is called [Nuxt]
+(https://github.com/nuxt/nuxt.js). It is very powerful and includes many additional features. However, it is not stable and has not yet released the 1.0 release yet. Additionally, the added features can introduce uncessary complexity into our application.
 
-In this tu
+[Hexo.js](https://github.com/hexojs/hexo), [gatsby](https://github.com/gatsbyjs/gatsby) and [jekyll](https://jekyllrb.com/) are alternative static blogging engines that do not use Vue.js.
 
-### Alternatives
+## Get started building 
 
+To start building a new Vuelog project you must fork or clone the Vuelog repository, install dependencies and then run the development server using the steps below:
 
-
-### Steps
-- Clone the Vuelog repo, install dep, start dev server
-- internationalization is a core feature and baked into the project 
-	-  `<!-- zh-CN:+ -->  <!-- zh-CN:- -->` in posts for other languages
-- 
-
-### Example post 
 ```
-title: Author posts or pages
+$ git clone https://github.com/myst729/Vuelog.git my-repo-name
+$ cd my-repo-name && npm install 
+$ npm run dev 
+```
+
+The application will run on `localhost:8080`.
+
+![Vuelog starting point](https://i.imgur.com/VwIAid6.png)
+
+## Customize our blog
+
+The starting point for a new Vuelog project comes with a lot of boilerplate code. In order to get our own blog up and running we'll have to delete and refactor.
+
+Most of the configuration happens in **userdata/database.js** and the **userdata** folder also holds our markdown posts. 
+
+The two sections to pay attention to are `navigation` and `pages`. We will update these values to reflect our custom blog structure:
+
+```
+// The image displayed in site header right beside the brand.
+logo: './static/employbl_logo.png',
+
+...
+
+
+navigation: [
+    {
+      label: {'en-US': 'Work' },
+      type: 'page',
+      path: '/page/work'
+    },
+    {
+      label: {'en-US': 'About' },
+      type: 'page',
+      path: '/page/about'
+    },
+    {
+      label: {'en-US': 'Blog' },
+      type: 'category',
+      path: '/blog'
+    },
+    {
+      label: {'en-US': 'Archive' },
+      type: 'archive',
+      path: '/archive'
+    },
+    {
+      label: {'en-US': 'Links' },
+      type: 'dropdown',
+      path: '', // (OPTIONAL) dropdown can be routable too if you set a valid route path
+      children: [
+        {
+          label: {'en-US': 'LinkedIn' },
+          type: 'outgoing', // A plain link can redirect to an in-site route or an out-going URL
+          link: 'http://linkedin.com/in/connorleech'
+        },
+        {
+          label: 'GitHub',
+          type: 'outgoing',
+          link: 'https://github.com/connor11528'
+        },
+        {
+          label: 'Twitter',
+          type: 'outgoing',
+          link: 'https://stackoverflow.com/users/1032492'
+        }
+      ]
+    }
+  ],
+
+  pages: [
+    {
+      title: {'en-US': 'Work'},
+      slug: 'work', // corresponds to markdown file name
+      exclude: true,      // (OPTIONAL) `true` to exclude the page from archive view
+      titleless: false,   // (OPTIONAL) `true` to hide the title in page view
+      commentless: true, // (OPTIONAL) `true` to disable comments for the page
+      draft: false        // (OPTIONAL) `true` to make the page temporarily inaccessible
+    },
+    {
+      title: {'en-US': 'About'},
+      slug: 'about',
+      exclude: true,
+      titleless: false,   // (OPTIONAL) `true` to hide the title in page view
+      commentless: true, // (OPTIONAL) `true` to disable comments for the page
+    }
+  ],
+```
+
+The value for `slug` in the pages array maps to the title of the markdown file we define in **userdata/pages/**. This configuration file serves as a source of truth for defining the structure of our blog application. We can also dynamically define our navigation menu and update the header image. Static assets are stored in the **static/** directory.
+
+## Create an example post 
+
+Now that we have defined the pages and navigation we'd like in out application we can create a new post called **userdata/posts/2017/sample.md**:
+
+```
+title: This is a sample title
 category: docs
-date: 2017-01-13
+date: 2017-09-22
 ------------------------------------
-Start your post content here...
+Welcome to the **sample** post written in *markdown*!
+
+<!-- zh-CN:+ -->  
+This will show if the language is set to Mandarin
+
+<!-- zh-CN:- -->
 ```
+
+Including the metadata in the post title itself is optional but can be helpful down the line.
+
+We then add that post to our array of posts in **userdata/database.js**:
+
+```
+  posts: [
+    /* 2017 */
+    {
+      title: {'en-US': 'This is a sample title'},
+      slug: 'sample',
+      category: 'docs',
+      date: '2017-09-22'
+    },
+    ...
+```
+
+## Deploy to Github Pages 
+
+In order to deploy our application we first have to compile all of our vue files and assets. This command is defined in our **package.json** file and can be invoked by running: `npm run build` in the terminal. This generates our production application code into the **docs** folder.
+
+
+
+Update the base path and run the build. Then create a new gh-pages branch that features the current build.
+
+
