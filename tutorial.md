@@ -160,10 +160,28 @@ We then add that post to our array of posts in **userdata/database.js**:
 
 ## Deploy to Github Pages 
 
+Create a github repo for your project and set the base path in **userdata/database.js** to the name of your github repo:
+
+```
+base: '/name-of-github-repo/',
+```
+
+Initialize a git repository for the project and commit all changes:
+
+```
+$ git init 
+$ git add -A 
+$ git commit -m 'initial commit'
+$ git remote add orgin YOUR_GITHUB_HTTPS_OR_SSH_URL 
+$ git push origin master 
+```
+
 In order to deploy our application we first have to compile all of our vue files and assets. This command is defined in our **package.json** file and can be invoked by running: `npm run build` in the terminal. This generates our production application code into the **docs** folder.
 
+Once we have built out our code we're going to reformat for production and push to the `gh-pages` branch.
 
-
-Update the base path and run the build. Then create a new gh-pages branch that features the current build.
+```
+$ git checkout -b gh-pages 
+```
 
 
