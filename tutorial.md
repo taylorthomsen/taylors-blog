@@ -182,6 +182,23 @@ Once we have built out our code we're going to reformat for production and push 
 
 ```
 $ git checkout -b gh-pages 
+$ rm -rf static userdata
+$ mv docs/* .
 ```
 
+The above commands create a `gh-pages` branch, removes the static and userdata directories and then moves our production build folder from docs into their place. We are doing this because for the gh-pages branch we want the production build to be at root level.
+
+If we make changes to our master branch and would like to redploy we can delete the gh-pages branch with the below command and deploy again according to the above process.
+
+```
+$ git push -d origin gh-pages
+$ git branch -d gh-pages
+$ git branch
+```
+
+## Conclusion 
+
+Vuelog is a powerful tool for rendering a markdown blog with Vue.js. Under the hood it parses markdown and generates our application from a centralized configuration repository. The Vue.js source code is familiar and gives us power to create custom interactions for our users and provides lightning fast client side routing for our users. 
+
+As far as static blogging software goes Vuelog is not the most developed nor does it have the largest community. However it does utilize the power of Vue.js to render blog posts on the client. The codebase is small enough to be able to understand nearly in its entirety. If you are comfortable with Vue.js Vuelog is definitely worth exploring further for your blogging and static site needs.
 
