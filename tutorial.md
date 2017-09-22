@@ -15,7 +15,9 @@ In this tutorial we are going to go through building a static blogging applicati
 
 ## The application 
 
+Demo: http://connorleech.info/vuelog-starter/
 
+Source code: https://github.com/connor11528/vuelog-starter
 
 ## Why static blogs?
 
